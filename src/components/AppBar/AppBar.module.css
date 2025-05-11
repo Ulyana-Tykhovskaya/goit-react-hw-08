@@ -1,8 +1,6 @@
 .header {
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 12px 24px;
-  background-color: #f0f0f0;
-  border-bottom: 1px solid #ccc;
 }
