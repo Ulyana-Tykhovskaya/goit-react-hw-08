@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login, register, refreshUser, logout } from "./operations";
+import { register, login, logout, refreshUser } from "./operations";
 
 const initialState = {
   user: { name: null, email: null },
@@ -43,16 +43,3 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-
-export const token = {
-  set(token) {
-    import("axios").then(({ default: axios }) => {
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    });
-  },
-  unset() {
-    import("axios").then(({ default: axios }) => {
-      axios.defaults.headers.common.Authorization = "";
-    });
-  },
-};

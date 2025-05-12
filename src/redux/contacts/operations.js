@@ -1,40 +1,38 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://connections-api.goit.global";
-
 export const fetchContacts = createAsyncThunk(
   "contacts/fetchAll",
-  async (_, thunkAPI) => {
+  async (_, thunk_api) => {
     try {
       const response = await axios.get("/contacts");
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      return thunk_api.rejectWithValue(error.message);
     }
   }
 );
 
 export const addContact = createAsyncThunk(
   "contacts/addContact",
-  async (newContact, thunkAPI) => {
+  async (contact, thunk_api) => {
     try {
-      const response = await axios.post("/contacts", newContact);
+      const response = await axios.post("/contacts", contact);
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      return thunk_api.rejectWithValue(error.message);
     }
   }
 );
 
 export const deleteContact = createAsyncThunk(
   "contacts/deleteContact",
-  async (id, thunkAPI) => {
+  async (contact_id, thunk_api) => {
     try {
-      const response = await axios.delete(`/contacts/${id}`);
+      const response = await axios.delete(`/contacts/${contact_id}`);
       return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      return thunk_api.rejectWithValue(error.message);
     }
   }
 );
